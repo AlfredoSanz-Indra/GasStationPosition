@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -33,6 +34,9 @@ class MainView {
 
     @Composable
     fun createView() {
+        val viewModel: MainViewModel = koinViewModel()
+        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
         Klog.line("MainView", "createView", "kld")
 
         MaterialTheme(colorScheme = MaterialTheme.colorScheme) {
@@ -46,6 +50,11 @@ class MainView {
             ) {
                 Spacer(modifier = Modifier.height(30.dp))
                 errorGeneralField()
+
+                if(uiState.isSomethingWorking) {
+                    Spacer(modifier = Modifier.height(30.dp))
+                    Working()
+                }
 
                 buttonsPrimaryActions()
             }
@@ -75,6 +84,20 @@ class MainView {
     }
 
     @Composable
+    private fun Working() {
+        CircularProgressIndicator()
+
+        Text(
+            "Working ....",
+            color = CommonViewComp.c_card_buttonOneContent,
+            style = TextStyle(
+                fontSize = 20.sp,
+                background = CommonViewComp.c_snow
+            )
+        )
+    }
+
+    @Composable
     private fun buttonsPrimaryActions() {
 
         val viewModel: MainViewModel = koinViewModel()
@@ -84,10 +107,11 @@ class MainView {
             .height(70.dp),
             colors = CommonViewComp.getActionsButtonColour(),
             onClick = {
-                Klog.line("MainView", "buttonsPrimaryActions", "do Something clicked")
+                Klog.line("MainView", "buttonsPrimaryActions", "reload prices clicked")
+                viewModel.reloadPrices()
             }
         ) {
-            Text("do Something")
+            Text("Reload Prices")
         }
       }
 }
