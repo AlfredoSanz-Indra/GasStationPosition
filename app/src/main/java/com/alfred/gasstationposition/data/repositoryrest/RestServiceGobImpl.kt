@@ -26,8 +26,8 @@ class RestServiceGobImpl(private val ioDispatcher: CoroutineDispatcher): RestSer
 
         withContext(ioDispatcher) {
             val defer = async(ioDispatcher) {
-                //val url = "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/"
-                val url = "https://jsonplaceholder.typicode.com/todos/1"
+                val url = "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/"
+                //val url = "https://jsonplaceholder.typicode.com/todos/1"
                 Klog.line("RestServiceGobImpl","getPreciosCarburantesTerrestre","url -> $url")
                 val client = HttpClient(OkHttp) {
                     install(ContentNegotiation) {
@@ -43,6 +43,9 @@ class RestServiceGobImpl(private val ioDispatcher: CoroutineDispatcher): RestSer
                         Klog.line("RestServiceGobImpl", "getPreciosCarburantesTerrestre", "response.status -> ${response.status}")
                         resp = SimpleDataResponse(true, 200, "response -> ${response.status}")
                         resp.dat = response.body()
+                        //resp.prueba = response.body()
+                        resp.estaciones = response.body()
+                        Klog.line("RestServiceGobImpl", "getPreciosCarburantesTerrestre", "resp.prueba -> ${resp.prueba}")
                    }
                     else {
                         result  = SimpleDataResponse(false, 500, "KO -> ${response.status}")

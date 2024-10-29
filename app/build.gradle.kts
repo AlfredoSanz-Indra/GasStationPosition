@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    kotlin("plugin.serialization") version "1.9.25"
+    id("org.jetbrains.kotlin.plugin.compose")
+    kotlin("plugin.serialization") version "2.0.21"
 }
 
 android {
@@ -13,7 +14,7 @@ android {
         minSdk = 31
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0.2"
+        versionName = "1.0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -62,7 +63,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.5")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.5")
     implementation("androidx.compose.material:material-icons-extended")
-    implementation("org.jetbrains.kotlin:kotlin-serialization:2.1.0-Beta2")
+    //implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
     //Koin
     implementation("io.insert-koin:koin-androidx-compose:3.5.6")
@@ -75,7 +76,7 @@ dependencies {
     implementation("io.ktor:ktor-client-core:3.0.0")
     implementation("io.ktor:ktor-client-okhttp:3.0.0")
     implementation("io.ktor:ktor-client-content-negotiation:3.0.0")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.0")
+   implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.0")
 
     // Desugaring JDK
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
