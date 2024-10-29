@@ -18,8 +18,13 @@ class GasServiceImpl(private val restServiceGob: RestServiceGob): GasService {
         try {
             val resp =  restServiceGob.getPreciosCarburantesTerrestre()
             Klog.line("GasServiceImpl", "getGasInfoFromGob", "resp -> $resp")
+            Klog.line("GasServiceImpl", "getGasInfoFromGob", "resp.prueba -> ${resp.prueba}")
+            Klog.line("GasServiceImpl", "getGasInfoFromGob", "resp.estaciones.Nota -> ${resp.estaciones?.Nota}")
+            Klog.line("GasServiceImpl", "getGasInfoFromGob", "resp.estaciones.ResultadoConsulta -> ${resp.estaciones?.ResultadoConsulta}")
+            Klog.line("GasServiceImpl", "getGasInfoFromGob", "resp.estaciones.Fecha -> ${resp.estaciones?.Fecha}")
+            Klog.line("GasServiceImpl", "getGasInfoFromGob", "resp.estaciones.ListaEESSPrecio.size -> ${resp.estaciones?.ListaEESSPrecio?.size}")
             result = SimpleResponse(true, resp.code, resp.message, "")
-            result.dat = resp.dat
+            result.dat = resp.estaciones?.Fecha
         }
         catch(e: Exception) {
             Klog.line("GasServiceImpl", "getGasInfoFromGob", "Error -> ${e.message}")

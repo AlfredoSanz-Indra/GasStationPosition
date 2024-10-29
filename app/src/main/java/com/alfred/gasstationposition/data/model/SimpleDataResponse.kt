@@ -10,4 +10,6 @@ data class SimpleDataResponse(val result: Boolean,
 
     var dat: String? = null
     var datList: MutableList<String>? = null
+    var prueba: Prueba? = null
+    var estaciones: ResultStations? = null
 }
