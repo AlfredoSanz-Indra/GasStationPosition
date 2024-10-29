@@ -1,7 +1,7 @@
 package com.alfred.gasstationposition.core.di
 
-import com.alfred.gasstationposition.data.repository.RestServiceGobImpl
-import com.alfred.gasstationposition.data.repositoryapi.RestServiceGob
+import com.alfred.gasstationposition.data.repositoryrest.RestServiceGobImpl
+import com.alfred.gasstationposition.data.repositoryrestapi.RestServiceGob
 import com.alfred.gasstationposition.domain.usecase.GasServiceImpl
 import com.alfred.gasstationposition.domain.usecaseapi.GasService
 import kotlinx.coroutines.Dispatchers

@@ -12,7 +12,7 @@ import org.koin.core.context.GlobalContext.startKoin
 /**
  * @author Alfredo Sanz
  * @time 2024
- * @version 1.0.1
+ * @version 1.0.2
  */
 class MainApp: Application() {
 

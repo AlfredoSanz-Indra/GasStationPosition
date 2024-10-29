@@ -1,4 +1,4 @@
-package com.alfred.gasstationposition.data.repositoryapi
+package com.alfred.gasstationposition.data.repositoryrestapi
 
 import com.alfred.gasstationposition.data.model.SimpleDataResponse
 
