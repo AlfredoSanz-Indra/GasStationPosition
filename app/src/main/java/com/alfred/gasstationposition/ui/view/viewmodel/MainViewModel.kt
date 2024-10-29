@@ -33,6 +33,8 @@ class MainViewModel(private val gasService: GasService) : ViewModel() {
             Klog.line("MainViewModel", "reloadPrices", "resp: $resp")
             if(resp.result) {
                 Klog.line("MainViewModel", "reloadPrices", "result true, resp.datList: ${resp.datList}")
+                Klog.line("MainViewModel", "reloadPrices", "result true, resp.datList: ${resp.dat}")
+                setGeneralError(" ${resp.code}: ${resp.message}")
             }
             else {
                 Klog.line("MainViewModel", "reloadPrices", "error")

@@ -13,7 +13,7 @@ android {
         minSdk = 31
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0.1"
+        versionName = "1.0.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -43,7 +43,7 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/{AL2.0,LGPL2.1,ASL2.0,DEPENDENCIES}"
         }
     }
 }
@@ -70,6 +70,12 @@ dependencies {
 
     //kotlinx-datetime
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
+
+    //Ktor
+    implementation("io.ktor:ktor-client-core:3.0.0")
+    implementation("io.ktor:ktor-client-okhttp:3.0.0")
+    implementation("io.ktor:ktor-client-content-negotiation:3.0.0")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.0")
 
     // Desugaring JDK
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
